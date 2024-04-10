@@ -1,0 +1,17 @@
+{
+  "name": "web-project-1",
+  "version": "1.0.0",
+  "description": "This is a team repository for our first Telerik project, building a Giphy single page app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
