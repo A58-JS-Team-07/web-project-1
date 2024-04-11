@@ -1,10 +1,5 @@
 import { API_MASTER } from '../common/api.js';
 
-
-
-// https://api.giphy.com/v1/gifs/trending?api_key=u5hAg5LLnVxq1EyKBHVCHDRkivGmhlLO&limit=25&offset=0&rating=g&bundle=messaging_non_clips
-
-
 export const loadTrendingGIFs = async (limit = '25') => {
   try {
     const response = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${API_MASTER}&limit=${limit}&offset=0&rating=g&bundle=messaging_non_clips`);
