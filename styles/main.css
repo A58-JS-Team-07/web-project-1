@@ -1,7 +1,9 @@
+/*GENERAL STYLING*/
 body {
   margin: 0;
   background: #f6e9de;
   font-family: "Inter", sans-serif;
+  color: #1a1a1a;
 }
 
 #app {
@@ -57,4 +59,30 @@ footer {
   #copyright {
     text-align: center;
   }
+}
+
+
+/*CONTAINER*/
+/*GIF snippets*/
+.gifs-listing {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 50px; /* Adjust the value as needed */
+}
+
+.gifs-listing .gif-snippet {
+  position: relative;
+  width: 100%;
+  border: solid 2px #1a1a1a;
+  border-right: 4px solid #1a1a1a;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.gifs-listing .gif-snippet .gif-title {
+  font-size: 18px;
+  color: #fff;
+  position: absolute;
+  bottom: 20px;
+  padding: 0 30px;
 }
