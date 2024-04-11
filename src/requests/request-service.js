@@ -1,10 +1,9 @@
 import { API_MASTER } from '../common/api.js';
 
-// const API_KEY_BY_ID = `https://api.giphy.com/v1/gifs/${GIF_ID}?api_key=${API_MASTER}&rating=g`;
 
-// const API_KEY_SEARCH = `https://api.giphy.com/v1/gifs/search?api_key=${API_MASTER}&q=${SEARCH_TERM}&limit=25&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
 
-// const API_KEY_FAVORITE = `https://api.giphy.com/v1/gifs?api_key=${API_MASTER}&ids=${FAVORITE_ARRAY.join(',')}&rating=g`;
+// https://api.giphy.com/v1/gifs/trending?api_key=u5hAg5LLnVxq1EyKBHVCHDRkivGmhlLO&limit=25&offset=0&rating=g&bundle=messaging_non_clips
+
 
 export const loadTrendingGIFs = async (limit = '25') => {
   try {
@@ -133,12 +132,22 @@ export const loadGIFsBySearchTerm = async (query, limit = '25') => {
   }
 };
 
+export const uploadGIF = (file, arrayTags, source) => {
+  // `https://upload.giphy.com/v1/gifs/api_key=${API_MASTER}&file=${file}&tags=${arrayTags}&source_post_url=${source}`
+  // must be implemented
+};
 
-(async () => {
-  try {
-    const result = await loadGIFsBySearchTerm('cats', '5');
-    console.log('Async operation completed:', result);
-  } catch (error) {
-    console.error('An error occurred during async operation:', error);
-  }
-})();
+export const loadRandomGIFs = () => {
+  // must be implemented
+};
+
+
+// FOR TESTING PURPOSES
+// (async () => {
+//   try {
+//     const result = await loadGIFsBySearchTerm('cats', '5');
+//     console.log('Async operation completed:', result);
+//   } catch (error) {
+//     console.error('An error occurred during async operation:', error);
+//   }
+// })();
