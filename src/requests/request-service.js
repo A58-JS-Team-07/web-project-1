@@ -33,11 +33,11 @@ export const loadTrendingGIFs = async (limit = '25') => {
     });
     return resultArray;
   } catch (e) {
-    throw new Error(`Error in loadTrending async function: ${e.message}`);
+    throw new Error(`Error in loadTrendingGIFs async function: ${e.message}`);
   }
 };
 
-export const loadSingleGIF = async (id) => {
+export const loadSingleGIFbyID = async (id) => {
   try {
     const response = await fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${API_MASTER}&rating=g`);
 
@@ -66,16 +66,48 @@ export const loadSingleGIF = async (id) => {
 
     return gifObject;
   } catch (e) {
-    throw new Error(`Error in loadTrending async function: ${e.message}`);
+    throw new Error(`Error in loadSingleGIFbyID async function: ${e.message}`);
   }
 };
 
-(async () => {
+
+export const loadMultipleGIFsByID = async (arrayWithGIFsID) => {
   try {
-    // Perform asynchronous operations inside this block
-    const result = await loadSingleGIF('yopWhLoxazBTbVFSIc');
-    console.log('Async operation completed:', result);
-  } catch (error) {
-    console.error('An error occurred during async operation:', error);
+    const response = await fetch(`https://api.giphy.com/v1/gifs?api_key=${API_MASTER}&ids=${arrayWithGIFsID.join(',')}&rating=g`);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch trending gifs: ${response.message}`);
+    }
+
+    const multipleGIFsBody = await response.json();
+    const multipleGIFsArray = multipleGIFsBody.data;
+
+    const resultArray = [];
+
+    multipleGIFsArray.map((gif) => {
+      const gifObject = {
+        title: gif.title,
+        id: gif.id,
+        image: {
+          url: gif.images.original.url,
+          height: gif.images.original.height,
+          width: gif.images.original.width,
+        },
+      };
+      resultArray.push(gifObject);
+    });
+    return resultArray;
+  } catch (e) {
+    throw new Error(`Error in loadMultipleGIFsByID async function: ${e.message}`);
   }
-})();
+};
+
+
+// (async () => {
+//   try {
+//     const result = await loadMultipleGIFsByID(['yopWhLoxazBTbVFSIc', 'QYK37DfxZioqeNnOgX', 'V42XDIEuOIitfEE5n5']);
+//     console.log('Async operation completed:', result);
+//   } catch (error) {
+//     console.error('An error occurred during async operation:', error);
+//   }
+// })();
