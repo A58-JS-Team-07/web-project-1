@@ -6,7 +6,7 @@ import { API_MASTER } from '../common/api.js';
 
 // const API_KEY_FAVORITE = `https://api.giphy.com/v1/gifs?api_key=${API_MASTER}&ids=${FAVORITE_ARRAY.join(',')}&rating=g`;
 
-export const loadTrending = async (limit = '25') => {
+export const loadTrendingGIFs = async (limit = '25') => {
   try {
     const response = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${API_MASTER}&limit=${limit}&offset=0&rating=g&bundle=messaging_non_clips`);
 
@@ -21,13 +21,13 @@ export const loadTrending = async (limit = '25') => {
 
     trendingGIFsArray.map((gif) => {
       const gifObject = {
+        title: gif.title,
         id: gif.id,
         image: {
           url: gif.images.original.url,
           height: gif.images.original.height,
           width: gif.images.original.width,
         },
-        title: gif.title,
       };
       resultArray.push(gifObject);
     });
@@ -37,10 +37,43 @@ export const loadTrending = async (limit = '25') => {
   }
 };
 
+export const loadSingleGIF = async (id) => {
+  try {
+    const response = await fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${API_MASTER}&rating=g`);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch trending gifs: ${response.message}`);
+    }
+
+    const singleGIFBody = await response.json();
+    const singleGIFObject = singleGIFBody.data;
+
+    const gifObject = {
+      title: singleGIFObject.title,
+      id: singleGIFObject.id,
+      source: singleGIFObject.source,
+      image: {
+        url: singleGIFObject.images.original.url,
+        height: singleGIFObject.images.original.height,
+        width: singleGIFObject.images.original.width,
+      },
+      user: {
+        name: singleGIFObject.user.display_name,
+        username: singleGIFObject.user.username,
+        description: singleGIFObject.user.description,
+      },
+    };
+
+    return gifObject;
+  } catch (e) {
+    throw new Error(`Error in loadTrending async function: ${e.message}`);
+  }
+};
+
 (async () => {
   try {
     // Perform asynchronous operations inside this block
-    const result = await loadTrending('3');
+    const result = await loadSingleGIF('yopWhLoxazBTbVFSIc');
     console.log('Async operation completed:', result);
   } catch (error) {
     console.error('An error occurred during async operation:', error);
