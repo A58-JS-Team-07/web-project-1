@@ -5,7 +5,7 @@ export const toUploadView = () => {
     <p>Easy way to share your favorite GIFs with the world. 
       Simply use the form below to upload a GIF to Giphy.com
       directly from your device or via image URL.</p>
-      <div id="upload-form">
+      <form action="" id="upload-form" method="POST">
       <div id="files-container">
         <div id="local-file-container">
           <label for="local-file">Upload GIF from your PC</label>
@@ -32,9 +32,9 @@ export const toUploadView = () => {
         </div>
       </div>
       <div id="button-container">
-        <button type="button" id="upload-button">Upload to GIPHY</button>
+        <input type="submit" value="Upload to GIPHY" id="upload-button">
       </div>
-    </div>  
+    </form>  
   </div>
   `;
 };
