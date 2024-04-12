@@ -127,20 +127,67 @@ export const loadGIFsBySearchTerm = async (query, limit = '25') => {
   }
 };
 
-export const uploadGIF = (file, arrayTags, source) => {
-  // `https://upload.giphy.com/v1/gifs/api_key=${API_MASTER}&file=${file}&tags=${arrayTags}&source_post_url=${source}`
-  // must be implemented
-};
-
 export const loadRandomGIFs = () => {
   // must be implemented
 };
 
+export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePostURL = '') => {
+  const formData = new FormData();
+  formData.append('api_key', API_MASTER);
+  formData.append('tags', stringTags); // !! Add check if input data is correctly added by user
+  formData.append('source_post_url', sourcePostURL); // !! Add check if input data is correctly added by user
+
+  if (file instanceof File) {
+    formData.append('file', file);
+  } else if (typeof fileURL === 'string' && fileURL.trim() !== '') {
+    formData.append('source_image_url', fileURL);
+  } else {
+    throw new Error('Invalid parameters: Either provide a File object or a valid file URL');
+  }
+
+  try {
+    const response = await fetch(`https://upload.giphy.com/v1/gifs`, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorResponse = await response.json();
+      throw new Error(`Failed to upload gif: ${errorResponse.message}`);
+    }
+
+    const uploadGIFBody = await response.json();
+    const newGIFId = uploadGIFBody.data.id;
+
+    return newGIFId;
+
+  } catch (error) {
+    throw new Error(`Error in uploadGIF async function: ${error.message}`);
+  }
+};
+
 
 // FOR TESTING PURPOSES
+
+// STANDARD GET
 // (async () => {
 //   try {
 //     const result = await loadGIFsBySearchTerm('cats', '5');
+//     console.log('Async operation completed:', result);
+//   } catch (error) {
+//     console.error('An error occurred during async operation:', error);
+//   }
+// })();
+
+// UPLOAD POST
+// (async () => {
+//   try {
+//     const tags = 'cats,dogs';
+//     const fileURL = 'https://bs.uenicdn.com/blog/wp-content/uploads/2018/04/giphy.gif';
+//     const file = null;
+//     const sourcePostURL = '';
+
+//     const result = await uploadGIF(tags, file, fileURL, sourcePostURL);
 //     console.log('Async operation completed:', result);
 //   } catch (error) {
 //     console.error('An error occurred during async operation:', error);
