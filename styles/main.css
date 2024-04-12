@@ -81,29 +81,44 @@ footer {
 
 /*GIF snippets*/
 .gifs-listing {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 50px;
-  /* Adjust the value as needed */
+  column-count: 4;
+  column-gap: 10px;
 }
 
 .gifs-listing .gif-snippet {
   position: relative;
-  width: 100%;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  margin-bottom: 10px;
+  break-inside: avoid;
   border: solid 2px var(--primary-color);
   border-right: 4px solid var(--primary-color);
+  border-bottom: 4px solid var(--primary-color);
   border-radius: 20px;
   overflow: hidden;
 }
 
-.gifs-listing .gif-snippet .gif-title {
-  font-size: 18px;
-  color: var(--white-color);
+.gif-snippet:hover {
+  cursor: pointer;
+}
+ 
+.gif-snippet:before {
+  content: '';
   position: absolute;
-  bottom: 20px;
-  padding: 0 30px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color); 
+  opacity: 0; 
+  transition: opacity 0.3s ease-in-out; 
+
 }
 
+.gif-snippet:hover::before {
+  opacity: 0.5;
+}
 
 /*Upload page*/
 #upload-form {
@@ -181,12 +196,12 @@ footer {
   gap: 30px;
 }
 
-#gif-add-info-container label{
+#gif-add-info-container label {
   font-size: 18px;
   font-weight: 500;
 }
 
-#gif-add-info-container input{
+#gif-add-info-container input {
   height: 40px;
   border: 2px solid var(--primary-color);
   border-radius: 5px;
@@ -197,7 +212,8 @@ footer {
   font-weight: 300;
 }
 
-#tags-container, #source-url-container {
+#tags-container,
+#source-url-container {
   display: flex;
   flex-direction: column;
   width: 50%;

@@ -7,10 +7,10 @@ export const toTrendingView = ( GIFsArray) => {
 
 export const toGIFSnippet = (GIF) => `
 <div class="gif-snippet">
-  <img class="gif-image" src="${GIF.image.url}" alt="${GIF.title}" width=100% height=auto>
-  <h2 class="gif-title">${GIF.title}</h2>
+  <img class="gif-image" src="${GIF.image.url}" alt="${GIF.title}" width="100%" height="auto">
 </div>
 `;
 
 
 // <!-- ${renderFavoriteStatus(GIF.id)} THIS MUST BE corrected !!!!!!!!!!!!!! -->
+// <h2 class="gif-title">${GIF.title}</h2>

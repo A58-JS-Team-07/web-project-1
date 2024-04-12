@@ -34,7 +34,7 @@ export const loadPage = (page = '') => {
 
 
 const renderTrending = async () => {
-  const trendingArray = await loadTrendingGIFs('10');
+  const trendingArray = await loadTrendingGIFs('25');
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trendingArray);
 };
 
