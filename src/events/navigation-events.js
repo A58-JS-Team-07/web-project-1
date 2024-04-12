@@ -1,6 +1,7 @@
 import { TRENDING, FAVORITES, UPLOAD, CONTAINER_SELECTOR } from '../common/constants.js';
 import { loadTrendingGIFs, loadSingleGIFbyID, loadMultipleGIFsByID, loadGIFsBySearchTerm, uploadGIF, loadRandomGIFs } from '../requests/request-service.js';
 import { toTrendingView } from '../views/trending-view.js';
+import { toUploadView } from '../views/upload-view.js';
 import { q, setActiveNav } from './helpers.js';
 
 export const loadPage = (page = '') => {
@@ -8,8 +9,7 @@ export const loadPage = (page = '') => {
     switch (page) {
       case TRENDING: {
         setActiveNav(TRENDING);
-        const trendingPage = renderTrending();
-        return trendingPage;
+        return renderTrending();
       }
 
       // case FAVORITES: {
@@ -18,11 +18,10 @@ export const loadPage = (page = '') => {
       //   return favoritesPage;
       // }
 
-      // case UPLOAD: {
-      //   setActiveNav(UPLOAD);
-      //   const uploadPage = await renderUpload();
-      //   return uploadPage;
-      // }
+      case UPLOAD: {
+        setActiveNav(UPLOAD);
+        return renderUpload();
+      }
 
       default:
         /* If the app supports error logging, use default to log mapping errors */
@@ -32,10 +31,13 @@ export const loadPage = (page = '') => {
     throw new Error(`loadPage error: ${e.message}`);
   }
 };
-const renderTrending = async () => {
-  const pageTitle = 'Today\'s Trending GIFs';
-  const pageDescription = 'Discover the latest and most popular GIFs from around the web on our dynamic platform powered by the Giphy API.';
-  const trendingArray = await loadTrendingGIFs('10');
 
-  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(pageTitle, pageDescription, trendingArray);
+
+const renderTrending = async () => {
+  const trendingArray = await loadTrendingGIFs('10');
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trendingArray);
+};
+
+const renderUpload = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };

@@ -1,6 +1,7 @@
-export const toTrendingView = (pageTitle, pageDescription, GIFsArray) => {
-  return `<h1 id="page-title">${pageTitle}</h1>
-  <p id="">${pageDescription}</p>
+export const toTrendingView = ( GIFsArray) => {
+  return `<h1 id="page-title">Today's Trending GIFs</h1>
+  <p id="">Discover the latest and most popular GIFs from around the 
+  web on our dynamic platform powered by the Giphy API.</p>
   <div class="gifs-listing">${GIFsArray.map(toGIFSnippet).join('\n')}</div>`;
 };
 

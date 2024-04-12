@@ -6,15 +6,15 @@ import { q } from './events/helpers.js';
 document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (event) => {
     if (event.target.classList.contains('nav-link')) {
-      loadPage(event.target.getAttributes('data-page'));
+      loadPage(event.target.getAttribute('data-page'));
     }
   });
-  loadPage(TRENDING);
 
   document.addEventListener('input', (event) => {
     if (event.target === q('input#search')) {
-      renderSearchItems(event.target.value)
+      renderSearchItems(event.target.value);
     }
-  })
+  });
 
+  loadPage(TRENDING);
 });
