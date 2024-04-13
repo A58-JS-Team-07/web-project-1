@@ -97,13 +97,17 @@ footer {
   border-bottom: 4px solid var(--primary-color);
   border-radius: 20px;
   overflow: hidden;
+  transition: 0.3s;
 }
 
+.gifs-listing .gif-snippet:hover {
+  scale: 1.02;
+}
 .gif-snippet:hover {
   cursor: pointer;
 }
  
-.gif-snippet:before {
+/* .gif-snippet:before {
   content: '';
   position: absolute;
   top: 0;
@@ -118,7 +122,7 @@ footer {
 
 .gif-snippet:hover::before {
   opacity: 0.5;
-}
+} */
 
 /*Upload page*/
 #upload-form {
