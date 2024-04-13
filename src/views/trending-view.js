@@ -5,9 +5,8 @@ export const toTrendingView = (pageTitle, pageDescription, GIFsArray) => {
 };
 
 export const toGIFSnippet = (GIF) => `
-<div class="gif-snippet">
-  <img class="gif-image" src="${GIF.image.url}" alt="${GIF.title}" width=100% height=auto>
-  <h2 class="gif-title">${GIF.title}</h2>
+<div class="gif-snippet" >
+  <img class="gif-image" data-gif-id="${GIF.id}" src="${GIF.image.url}" alt="${GIF.title}" width=100% height=auto>
 </div>
 `;
 

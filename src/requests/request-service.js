@@ -52,9 +52,9 @@ export const loadSingleGIFbyID = async (id) => {
         width: singleGIFObject.images.original.width,
       },
       user: {
-        name: singleGIFObject.user.display_name,
-        username: singleGIFObject.user.username,
-        description: singleGIFObject.user.description,
+        name: singleGIFObject.user?.display_name ?? '',
+        username: singleGIFObject.user?.username ?? '',
+        description: singleGIFObject.user?.description ?? '',
       },
     };
 

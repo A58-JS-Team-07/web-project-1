@@ -1,7 +1,9 @@
 import { TRENDING, FAVORITES, UPLOAD, CONTAINER_SELECTOR } from '../common/constants.js';
 import { loadTrendingGIFs, loadSingleGIFbyID, loadMultipleGIFsByID, loadGIFsBySearchTerm, uploadGIF, loadRandomGIFs } from '../requests/request-service.js';
 import { toTrendingView } from '../views/trending-view.js';
+import { toGIFDetailed } from '../views/gif-detailed.js';
 import { q, setActiveNav } from './helpers.js';
+
 
 export const loadPage = (page = '') => {
   try {
@@ -38,4 +40,10 @@ const renderTrending = async () => {
   const trendingArray = await loadTrendingGIFs('10');
 
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(pageTitle, pageDescription, trendingArray);
+};
+
+export const renderGIFDetails = async (id = null) => {
+  const GIF = await loadSingleGIFbyID(id);
+
+  q(CONTAINER_SELECTOR).innerHTML = toGIFDetailed(GIF);
 };
