@@ -97,8 +97,12 @@ footer {
   border-bottom: 4px solid var(--primary-color);
   border-radius: 20px;
   overflow: hidden;
+  transition: 0.3s;
 }
 
+.gifs-listing .gif-snippet:hover {
+  scale: 1.02;
+}
 .gif-snippet:hover {
   cursor: pointer;
 }
