@@ -52,9 +52,9 @@ export const loadSingleGIFbyID = async (id) => {
         width: singleGIFObject.images.original.width,
       },
       user: {
-        name: singleGIFObject.user.display_name,
-        username: singleGIFObject.user.username,
-        description: singleGIFObject.user.description,
+        name: singleGIFObject.user?.display_name ?? '',
+        username: singleGIFObject.user?.username ?? '',
+        description: singleGIFObject.user?.description ?? '',
       },
     };
 
@@ -133,9 +133,8 @@ export const loadRandomGIFs = () => {
 
 export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePostURL = '') => {
   const formData = new FormData();
-  formData.append('api_key', API_MASTER);
-  formData.append('tags', stringTags); // !! Add check if input data is correctly added by user
-  formData.append('source_post_url', sourcePostURL); // !! Add check if input data is correctly added by user
+  formData.append('api_key', API_MASTER); // Add your actual GIPHY API key here
+  formData.append('tags', stringTags);
 
   if (file instanceof File) {
     formData.append('file', file);
@@ -160,7 +159,6 @@ export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePos
     const newGIFId = uploadGIFBody.data.id;
 
     return newGIFId;
-
   } catch (error) {
     throw new Error(`Error in uploadGIF async function: ${error.message}`);
   }
