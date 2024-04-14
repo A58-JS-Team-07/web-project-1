@@ -1,4 +1,5 @@
 import { uploadGIF } from '../requests/request-service.js';
+import { addUpload } from '../data/uploads.js';
 
 export const executeUploadItem = async (formData) => {
   const stringTags = formData.get('tags') || '';
@@ -6,21 +7,18 @@ export const executeUploadItem = async (formData) => {
   const fileURL = formData.get('file-url') || '';
   const sourcePostURL = formData.get('source-url') || '';
 
-  // console.log(stringTags);
-  // console.log(file.name);
-  // console.log(file);
-  // console.log(fileURL);
-  // console.log(sourcePostURL);
-
   if (file.name === '') {
     file = '';
   }
 
   try {
-    await uploadGIF(stringTags, file, fileURL, sourcePostURL);
+    const newGifId = await uploadGIF(stringTags, file, fileURL, sourcePostURL);
+    addUpload(newGifId);
     console.log('Upload successful!');
+    alert('Upload successful!');
   } catch (error) {
-    console.error('Error uploading GIF:', error);
+    console.error('Error uploading GIF:', error.message);
+    alert('Please provide a GIF with the following formats: GIF, MP4, MOV, WebM or valid media URL.');
   }
 };
 

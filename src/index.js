@@ -3,7 +3,7 @@ import { loadPage } from './events/navigation-events.js';
 import { renderSearchItems } from './events/search-events.js';
 import { q } from './events/helpers.js';
 import { renderGIFDetails } from './events/navigation-events.js';
-import { executeUploadItem } from './events/upload-events.js';
+import { executeUploadItem } from './events/upload-form-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (event) => {
@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target.classList.contains('gif-image')) {
       renderGIFDetails(event.target.getAttribute('data-gif-id'));
     }
+
   });
   
   document.addEventListener('input', (event) => {
