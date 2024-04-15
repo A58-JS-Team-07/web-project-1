@@ -42,6 +42,7 @@ header {
 
 header #logo {
   max-width: 160px;
+  cursor: pointer;
 }
 
 header #menu-and-searchbar {
@@ -141,6 +142,36 @@ header #search {
   scale: 1.12;
 }
 
+/*upload button*/
+.upload-btn {
+  text-decoration: none;
+  color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, rgb(97, 87, 255) 0%, rgb(0, 204, 255) 100%);
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 0.2s ease-out;
+}
+
+.upload-btn:before {
+  content: '';
+  display: block;
+  width: 30px; 
+  height: 30px; 
+  background-image: url('../images/upload.svg');
+  background-size: cover; 
+  background-position: center;
+  filter: invert(1);
+}
+
+.upload-btn:hover {
+  scale: 1.08;
+}
 
 
 /*FOOTER STYLING*/
