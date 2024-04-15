@@ -1,7 +1,7 @@
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
 export const addFavorite = (gifID) => {
-  if (favorites.find(id => id === gifID)) {
+  if (favorites.find((id) => id === gifID)) {
     return;
   }
 
@@ -10,7 +10,7 @@ export const addFavorite = (gifID) => {
 };
 
 export const removeFavorite = (gifID) => {
-  favorites = favorites.filter(id => id !== gifID);
+  favorites = favorites.filter((id) => id !== gifID);
   localStorage.setItem('favorites', JSON.stringify(favorites));
 };
 

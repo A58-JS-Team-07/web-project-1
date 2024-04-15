@@ -5,10 +5,10 @@ import { q } from './helpers.js';
 export const toggleFavoriteStatus = (gifID) => {
   const favorites = getFavorites();
   const heartSpan = q(`span[data-fav-gif-id="${gifID}"]`);
-  
+
   if (favorites.includes(gifID)) {
     removeFavorite(gifID);
-    heartSpan.classList.remove('active')
+    heartSpan.classList.remove('active');
     heartSpan.innerHTML = EMPTY_HEART;
   } else {
     addFavorite(gifID);
@@ -20,7 +20,7 @@ export const toggleFavoriteStatus = (gifID) => {
 export const renderFavoriteStatus = (gifID) => {
   const favorites = getFavorites();
 
-  return favorites.includes(gifID)
-    ? `<span class="favorite active" data-fav-gif-id="${gifID}">${FULL_HEART}</span>`
-    : `<span class="favorite" data-fav-gif-id="${gifID}">${EMPTY_HEART}</span>`;
+  return favorites.includes(gifID) ?
+    `<span class="favorite active" data-fav-gif-id="${gifID}">${FULL_HEART}</span>` :
+    `<span class="favorite" data-fav-gif-id="${gifID}">${EMPTY_HEART}</span>`;
 };
