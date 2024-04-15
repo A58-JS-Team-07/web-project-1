@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target.classList.contains('gif-image')) {
       renderGIFDetails(event.target.getAttribute('data-gif-id'));
     }
+
   });
   
   document.addEventListener('input', (event) => {

@@ -1,9 +1,11 @@
-import { TRENDING, FAVORITES, UPLOAD, CONTAINER_SELECTOR } from '../common/constants.js';
+import { TRENDING, FAVORITES, UPLOAD, MY_UPLOAD, CONTAINER_SELECTOR } from '../common/constants.js';
 import { loadTrendingGIFs, loadSingleGIFbyID, loadMultipleGIFsByID, loadGIFsBySearchTerm, uploadGIF, loadRandomGIFs } from '../requests/request-service.js';
 import { toTrendingView } from '../views/trending-view.js';
 import { toGIFDetailed } from '../views/gif-detailed.js';
-import { toUploadView } from '../views/upload-view.js';
+import { toUploadView } from '../views/upload-form-view.js';
 import { q, setActiveNav } from './helpers.js';
+import { getUploadsIds, loadUploads } from '../data/uploads.js';
+import { toUploadsView } from '../views/uploads-view.js';
 import { getFavorites } from '../data/favorites.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 
@@ -24,7 +26,12 @@ export const loadPage = (page = '') => {
 
       case UPLOAD: {
         setActiveNav(UPLOAD);
-        return renderUpload();
+        return renderUploadForm();
+      }
+
+      case MY_UPLOAD: {
+        setActiveNav(MY_UPLOAD);
+        return renderUploadItems();
       }
 
       default:
@@ -42,9 +49,16 @@ const renderTrending = async () => {
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trendingArray);
 };
 
-const renderUpload = () => {
+const renderUploadForm = () => {
   q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
+
+const renderUploadItems = async () => {
+  const uploadsIds = getUploadsIds();
+  const uploads = await loadUploads(uploadsIds);
+
+  q(CONTAINER_SELECTOR).innerHTML = toUploadsView(uploads);
+}
 
 export const renderGIFDetails = async (id = null) => {
   const GIF = await loadSingleGIFbyID(id);
