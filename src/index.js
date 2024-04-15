@@ -3,7 +3,7 @@ import { loadPage } from './events/navigation-events.js';
 import { renderSearchItems } from './events/search-events.js';
 import { q } from './events/helpers.js';
 import { renderGIFDetails } from './events/navigation-events.js';
-import { executeUploadItem } from './events/upload-events.js';
+import { executeUploadItem } from './events/upload-form-events.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
