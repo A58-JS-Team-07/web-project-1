@@ -164,6 +164,36 @@ export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePos
   }
 };
 
+export const loadBondGIFs = async (limit = '25') => {
+  try {
+    const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_MASTER}&q=james bond&limit=${limit}&offset=0&rating=g&lang=en&bundle=messaging_non_clips`);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch Bond GIFs: ${response.message}`);
+    }
+
+    const searchGIFsBody = await response.json();
+    const searchGIFsArray = searchGIFsBody.data;
+
+    const resultArray = [];
+
+    searchGIFsArray.map((gif) => {
+      const gifObject = {
+        title: gif.title,
+        id: gif.id,
+        image: {
+          url: gif.images.original.url,
+          height: gif.images.original.height,
+          width: gif.images.original.width,
+        },
+      };
+      resultArray.push(gifObject);
+    });
+    return resultArray;
+  } catch (e) {
+    throw new Error(`Error in loadBondGIFs function: ${e.message}`);
+  }
+};
 
 // FOR TESTING PURPOSES
 

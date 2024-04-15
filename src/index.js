@@ -5,6 +5,7 @@ import { q } from './events/helpers.js';
 import { renderGIFDetails } from './events/navigation-events.js';
 import { executeUploadItem } from './events/upload-form-events.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
+import { renderBondItems } from './events/bond-gifs-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (event) => {
@@ -19,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (event.target.classList.contains('gif-image')) {
       renderGIFDetails(event.target.getAttribute('data-gif-id'));
+    }
+
+    if (event.target.classList.contains('bond-logo')) {
+      renderBondItems();
     }
 
   });
