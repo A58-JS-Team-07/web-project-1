@@ -1,4 +1,4 @@
-import { renderFavoriteStatus } from "../events/favorites-events.js";
+import { renderFavoriteStatus } from '../events/favorites-events.js';
 
 export const toGIFDetailed = (GIF) => `
 <div class="gif-detailed">

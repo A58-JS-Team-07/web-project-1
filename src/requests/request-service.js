@@ -146,7 +146,7 @@ export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePos
 
   try {
     const response = await fetch(`https://upload.giphy.com/v1/gifs`, {
-      method: "POST",
+      method: 'POST',
       body: formData,
     });
 

@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
       loadPage(event.target.getAttribute('data-page'));
     }
 
-    
+
     if (event.target.classList.contains('favorite')) {
-      toggleFavoriteStatus(event.target.getAttribute('data-fav-gif-id'))
+      toggleFavoriteStatus(event.target.getAttribute('data-fav-gif-id'));
     }
 
     if (event.target.classList.contains('gif-image')) {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
   });
-  
+
   document.addEventListener('input', (event) => {
     if (event.target === q('input#search')) {
       renderSearchItems(event.target.value);

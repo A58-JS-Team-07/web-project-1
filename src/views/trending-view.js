@@ -1,4 +1,4 @@
-import { renderFavoriteStatus } from "../events/favorites-events.js";
+import { renderFavoriteStatus } from '../events/favorites-events.js';
 
 export const toTrendingView = ( GIFsArray) => {
   return `<h1 id="page-title">Today's Trending GIFs</h1>
@@ -10,7 +10,9 @@ export const toTrendingView = ( GIFsArray) => {
 export const toGIFSnippet = (GIF) => `
 <div class="gif-snippet" >
   ${renderFavoriteStatus(GIF.id)}
-  <img class="gif-image" data-gif-id="${GIF.id}" src="${GIF.image.url}" alt="${GIF.title}" width=100% height=auto>
+  <img class="gif-image" data-gif-id="${GIF.id}" 
+  src="${GIF.image.url}" 
+  alt="${GIF.title}" width=100% height=auto>
 </div>
 `;
 
