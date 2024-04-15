@@ -1,3 +1,5 @@
+import { renderFavoriteStatus } from "../events/favorites-events.js";
+
 export const toGIFDetailed = (GIF) => `
 <div class="gif-detailed">
   <h1>${GIF.title}</h1>
@@ -9,8 +11,8 @@ export const toGIFDetailed = (GIF) => `
     <p>${GIF.user.username}</p>
     <p>${GIF.user.description}</p>
   </div>
-  <div class="favorite">
-    <btn id="favorite-btn">Add to favorite</btn>
+  <div class="favs">
+    <p> Add to favorite ${renderFavoriteStatus(GIF.id)}</p> 
   </div>
   <div class="source">
     <p id="source">Source: ${GIF.source}</p>

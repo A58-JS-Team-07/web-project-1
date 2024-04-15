@@ -252,3 +252,12 @@ footer {
 #upload-button {
   cursor: pointer;
 }
+
+
+/* .favs {
+  display: flex;
+} */
+
+.favorite {
+  cursor: pointer;
+}

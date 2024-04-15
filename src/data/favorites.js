@@ -1,17 +1,16 @@
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-export const addFavorite = (movieId) => {
-  if (favorites.find(id => id === movieId)) {
-    // Movie has already been added to favorites
+export const addFavorite = (gifID) => {
+  if (favorites.find(id => id === gifID)) {
     return;
   }
 
-  favorites.push(movieId);
+  favorites.push(gifID);
   localStorage.setItem('favorites', JSON.stringify(favorites));
 };
 
-export const removeFavorite = (movieId) => {
-  favorites = favorites.filter(id => id !== movieId);
+export const removeFavorite = (gifID) => {
+  favorites = favorites.filter(id => id !== gifID);
   localStorage.setItem('favorites', JSON.stringify(favorites));
 };
 

@@ -4,6 +4,8 @@ import { toTrendingView } from '../views/trending-view.js';
 import { toGIFDetailed } from '../views/gif-detailed.js';
 import { toUploadView } from '../views/upload-view.js';
 import { q, setActiveNav } from './helpers.js';
+import { getFavorites } from '../data/favorites.js';
+import { toFavoritesView } from '../views/favorites-view.js';
 
 
 export const loadPage = (page = '') => {
@@ -14,11 +16,11 @@ export const loadPage = (page = '') => {
         return renderTrending();
       }
 
-      // case FAVORITES: {
-      //   setActiveNav(FAVORITES);
-      //   const favoritesPage = await renderFavorites();
-      //   return favoritesPage;
-      // }
+      case FAVORITES: {
+        setActiveNav(FAVORITES);
+        const favoritesPage = renderFavorites();
+        return favoritesPage;
+      }
 
       case UPLOAD: {
         setActiveNav(UPLOAD);
@@ -48,4 +50,11 @@ export const renderGIFDetails = async (id = null) => {
   const GIF = await loadSingleGIFbyID(id);
 
   q(CONTAINER_SELECTOR).innerHTML = toGIFDetailed(GIF);
+};
+
+const renderFavorites = async () => {
+  const favorites = getFavorites().filter(element => element !== null);
+  Promise.all(favorites.map(id => loadSingleGIFbyID(id))).then((favGifsArray) => {
+    q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(favGifsArray);
+  });
 };
