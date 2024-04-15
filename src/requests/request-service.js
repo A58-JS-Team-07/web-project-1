@@ -45,13 +45,14 @@ export const loadSingleGIFbyID = async (id) => {
     const gifObject = {
       title: singleGIFObject.title,
       id: singleGIFObject.id,
-      source: singleGIFObject.source,
+      source: singleGIFObject.source || 'No source media provided',
       image: {
         url: singleGIFObject.images.original.url,
         height: singleGIFObject.images.original.height,
         width: singleGIFObject.images.original.width,
       },
       user: {
+        avatar: singleGIFObject.user?.avatar_url ?? '../../images/empty-avatar.webp',
         name: singleGIFObject.user?.display_name ?? '',
         username: singleGIFObject.user?.username ?? '',
         description: singleGIFObject.user?.description ?? '',

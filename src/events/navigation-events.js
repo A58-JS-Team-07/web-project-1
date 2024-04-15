@@ -8,6 +8,7 @@ import { getUploadsIds, loadUploads } from '../data/uploads.js';
 import { toUploadsView } from '../views/uploads-view.js';
 import { getFavorites } from '../data/favorites.js';
 import { toFavoritesView } from '../views/favorites-view.js';
+import { loadMultipleGIFsByID } from '../requests/request-service.js';
 
 
 export const loadPage = (page = '') => {
@@ -72,3 +73,14 @@ const renderFavorites = async () => {
     q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(favGifsArray);
   });
 };
+
+// if (favorites.length !== 0) {
+//   try {
+//     const favItems = await loadMultipleGIFsByID(favorites);
+//     q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(favItems);
+//   } catch (e) {
+//     throw new Error('Error in renderFavorites: ' + e.message);
+//   }
+// } else {
+//   q(CONTAINER_SELECTOR).innerHTML = toFavoritesView([]);
+// }
