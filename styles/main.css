@@ -156,13 +156,16 @@ header #search {
   font-size: 12px;
   text-transform: uppercase;
   transition: 0.2s ease-out;
+  border: solid 2px var(--primary-color);
+  border-right: 4px solid var(--primary-color);
+  border-bottom: 4px solid var(--primary-color);
 }
 
 .upload-btn:before {
   content: '';
   display: block;
-  width: 30px; 
-  height: 30px; 
+  width: 26px; 
+  height: 26px; 
   background-image: url('../images/upload.svg');
   background-size: cover; 
   background-position: center;
@@ -374,24 +377,27 @@ footer {
   align-items: center;
 }
 
+/*files*/
 #local-file-container,
 #file-url-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* Adjust the gap between child elements */
-  padding: 20px;
+  padding: 30px 20px ;
   background-color: var(--secondary-color);
   border-radius: 10px;
   width: 100%;
   box-sizing: border-box;
-  /* Ensure padding is included in width calculation */
+  min-height: 180px;
+  justify-content: center;
+  position: relative;
 }
 
-#local-file-container label,
-#file-url-container label {
+#local-file-container h3,
+#file-url-container h3 {
   font-size: 22px;
   font-weight: 700;
+  margin: 0;
 }
 
 .add-info {
@@ -416,6 +422,52 @@ footer {
   border-radius: 5px;
 }
 
+.file {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+
+.file-input {
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.file-input label {
+  display: block;
+  position: relative;
+  height: 40px;
+  border-radius: 5px;
+  background: linear-gradient(45deg, rgb(97, 87, 255) 0%, rgb(0, 204, 255) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s ease-out;
+  border: solid 2px var(--primary-color);
+  border-right: solid 4px var(--primary-color);
+  border-bottom: solid 4px var(--primary-color);
+}
+
+.file-input label:hover {
+  border: solid 2px var(--primary-color);
+  border-right: solid 2px var(--primary-color);
+  border-bottom: solid 2px var(--primary-color);
+}
+
+.file-name {
+  position: absolute;
+  bottom: -5px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/*additional info container*/
 #gif-add-info-container {
   display: flex;
   flex-direction: row;
