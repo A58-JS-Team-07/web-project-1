@@ -8,14 +8,18 @@ export const toUploadView = () => {
       <form action="" id="upload-form" method="POST">
       <div id="files-container">
         <div id="local-file-container">
-          <label for="local-file">Upload GIF from your PC</label>
+          <h3>Upload GIF from PC</h3>
           <div class="add-info">We support formats GIF, MP4, MOV, or WebM.</div>
-          <input type="file" name="local-file" id="local-file">
+          <div class="file-input">
+            <input type="file" id="file" class="file" name="local-file">
+            <label for="file">Select file</label>
+          </div>
+            <p class="file-name"></p>
         </div>
         <div id="text-separator">or</div>
         <div id="file-url-container">
-          <label for="file-url">Upload GIF with URL</label>
-          <div class="add-info">We support media URLs from GIPHY, YouTube, Vimeo, and others!</div>
+          <h3>Upload GIF with URL</h3>
+          <div class="add-info">We support media URLs</div>
           <input type="url" name="file-url" id="file-url">
         </div>
       </div>

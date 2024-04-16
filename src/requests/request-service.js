@@ -45,13 +45,14 @@ export const loadSingleGIFbyID = async (id) => {
     const gifObject = {
       title: singleGIFObject.title,
       id: singleGIFObject.id,
-      source: singleGIFObject.source,
+      source: singleGIFObject.source || 'No source media provided',
       image: {
         url: singleGIFObject.images.original.url,
         height: singleGIFObject.images.original.height,
         width: singleGIFObject.images.original.width,
       },
       user: {
+        avatar: singleGIFObject.user?.avatar_url ?? '../../images/empty-avatar.webp',
         name: singleGIFObject.user?.display_name ?? '',
         username: singleGIFObject.user?.username ?? '',
         description: singleGIFObject.user?.description ?? '',
@@ -146,7 +147,7 @@ export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePos
 
   try {
     const response = await fetch(`https://upload.giphy.com/v1/gifs`, {
-      method: "POST",
+      method: 'POST',
       body: formData,
     });
 
@@ -164,6 +165,36 @@ export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePos
   }
 };
 
+export const loadBondGIFs = async (limit = '25') => {
+  try {
+    const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_MASTER}&q=james bond&limit=${limit}&offset=0&rating=g&lang=en&bundle=messaging_non_clips`);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch Bond GIFs: ${response.message}`);
+    }
+
+    const searchGIFsBody = await response.json();
+    const searchGIFsArray = searchGIFsBody.data;
+
+    const resultArray = [];
+
+    searchGIFsArray.map((gif) => {
+      const gifObject = {
+        title: gif.title,
+        id: gif.id,
+        image: {
+          url: gif.images.original.url,
+          height: gif.images.original.height,
+          width: gif.images.original.width,
+        },
+      };
+      resultArray.push(gifObject);
+    });
+    return resultArray;
+  } catch (e) {
+    throw new Error(`Error in loadBondGIFs function: ${e.message}`);
+  }
+};
 
 //  LOAD RANDOM GIF
 export const loadRandomGIF = async () => {

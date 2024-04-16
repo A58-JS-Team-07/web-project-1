@@ -1,5 +1,5 @@
 import { TRENDING, FAVORITES, UPLOAD, MY_UPLOAD, CONTAINER_SELECTOR } from '../common/constants.js';
-import { loadTrendingGIFs, loadSingleGIFbyID, loadMultipleGIFsByID, loadGIFsBySearchTerm, uploadGIF, loadRandomGIFs } from '../requests/request-service.js';
+import { loadTrendingGIFs, loadSingleGIFbyID } from '../requests/request-service.js';
 import { toTrendingView } from '../views/trending-view.js';
 import { toGIFDetailed } from '../views/gif-detailed.js';
 import { toUploadView } from '../views/upload-form-view.js';
@@ -8,6 +8,7 @@ import { getUploadsIds, loadUploads } from '../data/uploads.js';
 import { toUploadsView } from '../views/uploads-view.js';
 import { getFavorites } from '../data/favorites.js';
 import { toFavoritesView } from '../views/favorites-view.js';
+import { loadMultipleGIFsByID } from '../requests/request-service.js';
 import { loadRandomGIF } from '../requests/request-service.js';
 
 
@@ -59,7 +60,7 @@ const renderUploadItems = async () => {
   const uploads = await loadUploads(uploadsIds);
 
   q(CONTAINER_SELECTOR).innerHTML = toUploadsView(uploads);
-}
+};
 
 export const renderGIFDetails = async (id = null) => {
   const GIF = await loadSingleGIFbyID(id);
@@ -81,11 +82,6 @@ const renderFavorites = async () => {
   q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(favorites, randomObject);
 
   }
-};
-
-export const randomGIFObject = async () => {
-  const result = await loadRandomGIF();
-  return result;
 };
 
 // if (favorites.length !== 0) {

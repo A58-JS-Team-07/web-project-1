@@ -1,5 +1,4 @@
 import { toGIFSnippet } from './trending-view.js';
-import { randomGIFObject } from '../events/navigation-events.js';
 
 // export const toFavoritesView = (favoriteGIFS, randomObject) => `
 // <div id="fav-gifs">
