@@ -1,4 +1,4 @@
-import { toGIFSnippet } from "./trending-view.js";
+import { toGIFSnippet } from './gif-snippet-view.js';
 
 export const toJamesBondView = (bondGIFS) => `
 <div id="bond-gifs">
