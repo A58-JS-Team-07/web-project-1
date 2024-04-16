@@ -1,4 +1,4 @@
-import { toGIFSnippet } from './gif-view.js';
+import { toGIFSnippet } from './gif-snippet-view.js';
 
 // export const toFavoritesView = (favoriteGIFS, randomObject) => `
 // <div id="fav-gifs">

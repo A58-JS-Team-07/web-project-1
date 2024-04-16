@@ -1,4 +1,4 @@
-import { toGIFSnippet } from './gif-view.js';
+import { toGIFSnippet } from './gif-snippet-view.js';
 
 export const toSearchView = (searchTerm, GIFsArray) => {
   return `<h1 id="page-title">Search: ${searchTerm}</h1>

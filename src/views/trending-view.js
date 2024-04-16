@@ -1,4 +1,4 @@
-import { toGIFSnippet } from "./gif-view.js";
+import { toGIFSnippet } from './gif-snippet-view.js';
 
 export const toTrendingView = ( GIFsArray) => {
   return `<h1 id="page-title">Today's Trending GIFs</h1>
