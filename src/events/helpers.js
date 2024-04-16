@@ -19,7 +19,22 @@ export const setActiveNav = (page) => {
       .from(navs)
       .forEach((element) => element
           .getAttribute('data-page') === page ?
-      element.classList.add('active') :
-      element.classList.remove('active'),
+            element.classList.add('active') :
+            element.classList.remove('active'),
       );
+};
+
+
+export const setLoader = (command) => {
+  const loaderDiv = q('overlay-loading');
+  console.log(loaderDiv);
+
+  // if (command === 'start') {
+
+
+  // } else if (command === 'stop') {
+
+  // } else {
+  //     throw new Error('Invalid loader command');
+  // }
 };

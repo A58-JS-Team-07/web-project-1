@@ -36,23 +36,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const fileNameAndSize = `${fileName} - ${fileSize}KB`;
         document.querySelector('.file-name').textContent = fileNameAndSize;
       });
-
-      // This is triggering the API
-      document.addEventListener('submit', async (event) => {
-        event.preventDefault(); // stops submitting the form to reload the page
-        const formData = new FormData(q('#upload-form'));
-        try {
-          await executeUploadItem(formData);
-        } catch (error) {
-          console.error('Error executing upload:', error);
-        }
-      });
     }
   });
 
   document.addEventListener('input', (event) => {
     if (event.target === q('input#search')) {
       renderSearchItems(event.target.value);
+    }
+  });
+
+  // This is triggering the API
+  document.addEventListener('submit', async (event) => {
+    event.preventDefault(); // stops submitting the form to reload the page
+    const formData = new FormData(q('#upload-form'));
+    try {
+      await executeUploadItem(formData);
+    } catch (error) {
+      console.error('Error executing upload:', error);
     }
   });
 
