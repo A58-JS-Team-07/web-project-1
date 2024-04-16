@@ -42,6 +42,8 @@ export const toUploadView = () => {
       <div id="button-container">
         <input type="submit" value="Upload to GIPHY" id="upload-button">
       </div>
+      <p class="error-message"></p>
+      <p  class="successful-upload"></p>
     </form>  
   </div>
   `;

@@ -8,8 +8,8 @@ import { getUploadsIds, loadUploads } from '../data/uploads.js';
 import { toUploadsView } from '../views/uploads-view.js';
 import { getFavorites } from '../data/favorites.js';
 import { toFavoritesView } from '../views/favorites-view.js';
-import { loadMultipleGIFsByID } from '../requests/request-service.js';
 import { loadRandomGIF } from '../requests/request-service.js';
+import { SNIPPETS_LIMITER } from '../common/constants.js';
 
 
 /**
@@ -58,7 +58,7 @@ export const loadPage = (page = '') => {
  * @returns {Promise<void>}
  */
 const renderTrending = async () => {
-  const trendingArray = await loadTrendingGIFs('25');
+  const trendingArray = await loadTrendingGIFs(SNIPPETS_LIMITER);
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trendingArray);
 };
 

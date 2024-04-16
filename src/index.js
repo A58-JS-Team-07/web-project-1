@@ -1,7 +1,7 @@
-import { TRENDING } from './common/constants.js';
+import { ENTER_KEYCODE, TRENDING } from './common/constants.js';
 import { loadPage } from './events/navigation-events.js';
 import { renderSearchItems } from './events/search-events.js';
-import { q } from './events/helpers.js';
+import { q, setLoader } from './events/helpers.js';
 import { renderGIFDetails } from './events/navigation-events.js';
 import { executeUploadItem } from './events/upload-form-events.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
@@ -42,18 +42,37 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.file-name').textContent = fileNameAndSize;
       });
     }
-  });
 
-
-  /** 
-   * Event listener function that listens for the 'input' event on the search input field and renders search items accordingly.
-   * @param {Event} event - The input event.
-   */
-  document.addEventListener('input', (event) => {
-    if (event.target === q('input#search')) {
-      renderSearchItems(event.target.value);
+    if (event.target.matches('#search-btn, #search-btn svg')) {
+      renderSearchItems(q('input#search').value);
     }
+
+    // if (event.target.matches('clear-search')) {
+    //   loadPage(q('a.nav-link[data-page="trending"]'));
+    // }
   });
+
+    q('input#search').addEventListener('keypress', (event) => {
+      if (event.key === 'Enter' || event.keyCode === ENTER_KEYCODE) {
+        
+        renderSearchItems(q('input#search').value);
+      }
+  });
+
+  //When we delete input from search bar the Trending page is loaded
+  //   document.addEventListener('input', (event) => {
+  //     const inputValue = q('input#search').value.trim();
+  //   if (inputValue === '') {
+  //     loadPage(q('a.nav-link[data-page="trending"]'));
+  //   }
+  // });
+
+  //Search bar is triggered on input value
+  // document.addEventListener('input', (event) => {
+  //   if (event.target === q('input#search')) {
+  //     renderSearchItems(event.target.value);
+  //   }
+  // });
 
   // This is triggering the API
   /** 
@@ -62,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   document.addEventListener('submit', async (event) => {
     event.preventDefault(); // stops submitting the form to reload the page
+    setLoader('start');
     const formData = new FormData(q('#upload-form'));
     try {
       await executeUploadItem(formData);

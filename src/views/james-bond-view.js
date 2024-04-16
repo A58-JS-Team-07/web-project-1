@@ -1,4 +1,4 @@
-import { toGIFSnippet } from "./trending-view.js";
+import { toGIFSnippet } from './gif-snippet-view.js';
 
 /**
  * Generates HTML markup for displaying James Bond GIFs.

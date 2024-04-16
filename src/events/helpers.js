@@ -1,3 +1,4 @@
+import { SECONDS_DELAY } from "../common/constants.js";
 /**
  * Shorthand for document.querySelector
  * @param {string} selector
@@ -36,15 +37,21 @@ export const setActiveNav = (page) => {
  * @returns {void}
  */
 export const setLoader = (command) => {
-  const loaderDiv = q('overlay-loading');
+  const loaderDiv = q('.overlay-loading');
+  console.log('setLoader');
   console.log(loaderDiv);
 
-  // if (command === 'start') {
-
-
-  // } else if (command === 'stop') {
-
-  // } else {
-  //     throw new Error('Invalid loader command');
-  // }
+  if (command === 'start') {
+    loaderDiv.classList.add('active');
+  } else if (command === 'stop') {
+    loaderDiv.classList.remove('active');
+  } else {
+    throw new Error('Invalid loader command');
+  }
 };
+
+export const removeMessageAfter3Seconds = (message) => {
+  setTimeout(() => {
+    return message.textContent = '';
+  }, SECONDS_DELAY);
+}
