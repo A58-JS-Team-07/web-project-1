@@ -38,8 +38,6 @@ export const setActiveNav = (page) => {
  */
 export const setLoader = (command) => {
   const loaderDiv = q('.overlay-loading');
-  console.log('setLoader');
-  console.log(loaderDiv);
 
   if (command === 'start') {
     loaderDiv.classList.add('active');
