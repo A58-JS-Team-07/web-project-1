@@ -37,13 +37,26 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.file-name').textContent = fileNameAndSize;
       });
     }
-  });
 
-  document.addEventListener('input', (event) => {
-    if (event.target === q('input#search')) {
-      renderSearchItems(event.target.value);
+    if (event.target.matches('#search-btn, #search-btn svg')) {
+      renderSearchItems(q('input#search').value);
     }
   });
+
+  //When we delete input from search bar the Trending page is loaded
+  //   document.addEventListener('input', (event) => {
+  //     const inputValue = q('input#search').value.trim();
+  //   if (inputValue === '') {
+  //     loadPage(q('a.nav-link[data-page="trending"]'));
+  //   }
+  // });
+
+  //Search bar is triggered on input value
+  // document.addEventListener('input', (event) => {
+  //   if (event.target === q('input#search')) {
+  //     renderSearchItems(event.target.value);
+  //   }
+  // });
 
   // This is triggering the API
   document.addEventListener('submit', async (event) => {
