@@ -1,3 +1,4 @@
+import { SECONDS_DELAY } from "../common/constants.js";
 /**
  * Shorthand for document.querySelector
  * @param {string} selector
@@ -38,3 +39,9 @@ export const setLoader = (command) => {
   //     throw new Error('Invalid loader command');
   // }
 };
+
+export const removeMessageAfter3Seconds = (message) => {
+  setTimeout(() => {
+    return message.textContent = '';
+  }, SECONDS_DELAY);
+}

@@ -1,4 +1,4 @@
-import { TRENDING } from './common/constants.js';
+import { ENTER_KEYCODE, TRENDING } from './common/constants.js';
 import { loadPage } from './events/navigation-events.js';
 import { renderSearchItems } from './events/search-events.js';
 import { q } from './events/helpers.js';
@@ -41,6 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target.matches('#search-btn, #search-btn svg')) {
       renderSearchItems(q('input#search').value);
     }
+
+    // if (event.target.matches('clear-search')) {
+    //   loadPage(q('a.nav-link[data-page="trending"]'));
+    // }
+  });
+
+    q('input#search').addEventListener('keypress', (event) => {
+      if (event.key === 'Enter' || event.keyCode === ENTER_KEYCODE) {
+        
+        renderSearchItems(q('input#search').value);
+      }
   });
 
   //When we delete input from search bar the Trending page is loaded
