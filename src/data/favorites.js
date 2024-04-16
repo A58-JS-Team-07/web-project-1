@@ -16,6 +16,7 @@ export const addFavorite = (gifID) => {
 /**
  * Removes a GIF from favorites list
  * @param {string} gifID - The ID of the GIF to be removed from favorites.
+ * @returns {void}
  */
 export const removeFavorite = (gifID) => {
   favorites = favorites.filter((id) => id !== gifID);
@@ -23,7 +24,12 @@ export const removeFavorite = (gifID) => {
 };
 
 /**
- * 
- * @returns An array with all favorites's IDs
+ * Retrieves the IDs of all favorite GIFs.
+ *
+ * This function returns a new array containing the IDs of all GIFs that have been marked as favorites.
+ * The IDs are stored in the `favorites` array. By using the spread operator, we ensure that
+ * a new array is returned, preventing any modifications to the original `favorites` array.
+ *
+ * @returns {string[]} An array containing the IDs of all favorite GIFs.
  */
 export const getFavorites = () => [...favorites];

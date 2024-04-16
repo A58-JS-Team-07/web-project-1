@@ -2,7 +2,7 @@ import { toGIFSnippet } from './gif-snippet-view.js';
 
 /**
  * Generates HTML markup for displaying trending GIFs.
- * @param {Object[]} GIFsArray - An array of objects representing trending GIFs. 
+ * @param {Object[]} GIFsArray - An array of objects representing trending GIFs.
  * @returns {string} - The HTML markup for displaying the trending GIFs.
  */
 export const toTrendingView = ( GIFsArray) => {

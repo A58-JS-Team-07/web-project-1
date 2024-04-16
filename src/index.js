@@ -52,14 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // }
   });
 
-    q('input#search').addEventListener('keypress', (event) => {
-      if (event.key === 'Enter' || event.keyCode === ENTER_KEYCODE) {
-        
-        renderSearchItems(q('input#search').value);
-      }
+  q('input#search').addEventListener('keypress', (event) => {
+    if (event.key === 'Enter' || event.keyCode === ENTER_KEYCODE) {
+      renderSearchItems(q('input#search').value);
+    }
   });
 
-  //When we delete input from search bar the Trending page is loaded
+  // When we delete input from search bar the Trending page is loaded
   //   document.addEventListener('input', (event) => {
   //     const inputValue = q('input#search').value.trim();
   //   if (inputValue === '') {
@@ -67,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //   }
   // });
 
-  //Search bar is triggered on input value
+  // Search bar is triggered on input value
   // document.addEventListener('input', (event) => {
   //   if (event.target === q('input#search')) {
   //     renderSearchItems(event.target.value);
@@ -75,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // });
 
   // This is triggering the API
-  /** 
+  /**
    * Event listener function that listens for the 'submit' event on the upload form, prevents the default form submission behavior, and executes the upload item asynchronously.
    * @param {Event} event - The submit event.
    */

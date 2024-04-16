@@ -1,6 +1,6 @@
 /**
  * Generates HTML markup for the upload form view.
- * @returns {string} - The HTML markup for the upload form view. 
+ * @returns {string} - The HTML markup for the upload form view.
  */
 export const toUploadView = () => {
   return `

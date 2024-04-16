@@ -2,7 +2,7 @@ import { renderFavoriteStatus } from '../events/favorites-events.js';
 
 /**
  * Generates HTML markup for displaying a snippet of a GIF.
- * @param {Object} GIF - An object representing the GIF. 
+ * @param {Object} GIF - An object representing the GIF.
  * @returns {string} - The HTML markup for displaying the GIF snippet.
  */
 export const toGIFSnippet = (GIF) => `

@@ -121,7 +121,7 @@ export const loadMultipleGIFsByID = async (arrayWithGIFsID) => {
 /**
  * Loads GIFs based on the provided search term from the Giphy API.
  * @async
- * @param {string} query - The search term used to retrieve GIFs. 
+ * @param {string} query - The search term used to retrieve GIFs.
  * @param {string} [limit='25'] - The maximum number of GIFs to load.
  * @returns {Promise<Object[]>} - A promise that resolves to an array of objects representing the loaded GIFs.
  * @throws {Error} - Throws an error if the fetching or parsing of GIFs fails.
@@ -157,17 +157,21 @@ export const loadGIFsBySearchTerm = async (query, limit = '25') => {
   }
 };
 
-export const loadRandomGIFs = () => {
-  // must be implemented
-};
 
 /**
- * 
- * @param {*} stringTags 
- * @param {*} file 
- * @param {*} fileURL 
- * @param {*} sourcePostURL 
- * @returns 
+ * Uploads a GIF to Giphy.
+ *
+ * This function takes a string of tags, a File object or a URL to a file, and a source post URL.
+ * It creates a FormData object and appends the API key, tags, and either the file or the file URL to it.
+ * It then sends a POST request to the Giphy upload endpoint with the FormData object.
+ * If the upload is successful, it returns the ID of the uploaded GIF.
+ *
+ * @param {string} stringTags - A string of tags for the GIF.
+ * @param {File|null} file - A File object representing the GIF to be uploaded.
+ * @param {string} fileURL - A URL to the GIF to be uploaded.
+ * @param {string} sourcePostURL - A URL to the source post of the GIF.
+ * @returns {Promise<string>} A promise that resolves to the ID of the uploaded GIF.
+ * @throws {Error} Throws an error if neither a File object nor a valid file URL is provided, or if the upload fails.
  */
 export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePostURL = '') => {
   const formData = new FormData();
@@ -205,8 +209,8 @@ export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePos
 /**
  * Loads James Bond GIFs from the Giphy API.
  * @async
- * @param {string} [limit='25'] - The maximum number of GIFs to load. 
- * @returns {Promise<Object[]>} - A promise that resolves to an array of objects representing the loaded GIFs. 
+ * @param {string} [limit='25'] - The maximum number of GIFs to load.
+ * @returns {Promise<Object[]>} - A promise that resolves to an array of objects representing the loaded GIFs.
  * @throws {Error} - Throws an error if the fetching or parsing of GIFs fails.
  */
 export const loadBondGIFs = async (limit = '25') => {
@@ -244,7 +248,7 @@ export const loadBondGIFs = async (limit = '25') => {
 /**
  * Loads a random GIF from the Giphy API.
  * @async
- * @returns {Promise<Object>} - A promise that resolves to an object representing the loaded GIF. 
+ * @returns {Promise<Object>} - A promise that resolves to an object representing the loaded GIF.
  * @throws {Error} - Throws an error if the fetching or parsing of the GIF fails.
  */
 export const loadRandomGIF = async () => {
@@ -260,20 +264,19 @@ export const loadRandomGIF = async () => {
 
     const randomGIFObject = {
       title: randomGIFasObject.title,
-        id: randomGIFasObject.id,
-        image: {
-          url: randomGIFasObject?.images.original.url ?? '',
-          height: randomGIFasObject?.images.original.height ?? '',
-          width: randomGIFasObject?.images.original.width ?? '',
+      id: randomGIFasObject.id,
+      image: {
+        url: randomGIFasObject?.images.original.url ?? '',
+        height: randomGIFasObject?.images.original.height ?? '',
+        width: randomGIFasObject?.images.original.width ?? '',
       },
     };
 
     return randomGIFObject;
   } catch (error) {
-      throw new Error(`Cannot load a random GIF: ${error.message}`)
+    throw new Error(`Cannot load a random GIF: ${error.message}`);
   }
 };
-
 
 
 // FOR TESTING PURPOSES

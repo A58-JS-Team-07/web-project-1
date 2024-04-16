@@ -2,8 +2,8 @@ import { toGIFSnippet } from './gif-snippet-view.js';
 
 /**
  * Generates HTML markup for displaying search results.
- * @param {string} searchTerm - The search term used for the query. 
- * @param {Object[]} GIFsArray - An array of objects representing the search results (GIFs). 
+ * @param {string} searchTerm - The search term used for the query.
+ * @param {Object[]} GIFsArray - An array of objects representing the search results (GIFs).
  * @returns {string} - The HTML markup for displaying the search results.
  */
 export const toSearchView = (searchTerm, GIFsArray) => {

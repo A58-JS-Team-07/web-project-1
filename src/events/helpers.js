@@ -1,4 +1,4 @@
-import { SECONDS_DELAY } from "../common/constants.js";
+import { SECONDS_DELAY } from '../common/constants.js';
 /**
  * Shorthand for document.querySelector
  * @param {string} selector
@@ -25,15 +25,15 @@ export const setActiveNav = (page) => {
       .from(navs)
       .forEach((element) => element
           .getAttribute('data-page') === page ?
-            element.classList.add('active') :
-            element.classList.remove('active'),
+      element.classList.add('active') :
+      element.classList.remove('active'),
       );
 };
 
 
 /**
  * Sets the visibility of the loader overlay.
- * @param {boolean} command - The command to control the visibility of the loader.
+ * @param {string} command - The command to control the visibility of the loader. Should be either 'start' or 'stop'.
  * @returns {void}
  */
 export const setLoader = (command) => {
@@ -52,6 +52,6 @@ export const setLoader = (command) => {
 
 export const removeMessageAfter3Seconds = (message) => {
   setTimeout(() => {
-    return message.textContent = '';
+    message.textContent = '';
   }, SECONDS_DELAY);
-}
+};

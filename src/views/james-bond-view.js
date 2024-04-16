@@ -2,7 +2,7 @@ import { toGIFSnippet } from './gif-snippet-view.js';
 
 /**
  * Generates HTML markup for displaying James Bond GIFs.
- * @param {Object[]} bondGIFS - An array of objects representing James Bond GIFs. 
+ * @param {Object[]} bondGIFS - An array of objects representing James Bond GIFs.
  * @returns {string} - The HTML markup for displaying James Bond GIFs.
  */
 export const toJamesBondView = (bondGIFS) => `

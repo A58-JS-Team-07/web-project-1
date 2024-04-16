@@ -13,7 +13,7 @@ import { SNIPPETS_LIMITER } from '../common/constants.js';
 
 
 /**
- * 
+ *
  * @param {*} [page = ''] - The identifier of the page to load.
  * @returns {Promise<HTMLElement|null>} - A promise that resolves to the rendered page content or null if no page is found.
  * @throws {Error} - Throws an error if an exception occurs during page loading and rendering.
@@ -92,7 +92,7 @@ const renderUploadItems = async () => {
  * Renders detailed information about a GIF into the specified container.
  * If no GIF ID is provided, renders a default view.
  * @async
- * @param {*} id 
+ * @param {*} id
  * @returns {Promise<void>}
  */
 export const renderGIFDetails = async (id = null) => {
@@ -108,18 +108,15 @@ export const renderGIFDetails = async (id = null) => {
  * @returns {Promise<void>}
  */
 const renderFavorites = async () => {
-  const favorites = getFavorites().filter(element => element !== null);
+  const favorites = getFavorites().filter((element) => element !== null);
 
   if (favorites.length !== 0) {
-
-  Promise.all(favorites.map(id => loadSingleGIFbyID(id))).then((favGifsArray) => {
-    q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(favGifsArray);
-  });
-} else {
-
-  const randomObject = await loadRandomGIF();
-  q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(favorites, randomObject);
-
+    Promise.all(favorites.map((id) => loadSingleGIFbyID(id))).then((favGifsArray) => {
+      q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(favGifsArray);
+    });
+  } else {
+    const randomObject = await loadRandomGIF();
+    q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(favorites, randomObject);
   }
 };
 

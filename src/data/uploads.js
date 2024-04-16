@@ -12,8 +12,13 @@ export const addUpload = (uploadId) => {
 };
 
 /**
- * 
- * @returns An array of the uploaded GIF's IDs
+ * Retrieves the IDs of all uploaded GIFs.
+ *
+ * This function returns a new array containing the IDs of all GIFs that have been uploaded.
+ * The IDs are stored in the `uploadsIds` array. By using the spread operator, we ensure that
+ * a new array is returned, preventing any modifications to the original `uploadsIds` array.
+ *
+ * @returns {string[]} An array containing the IDs of all uploaded GIFs.
  */
 export const getUploadsIds = () => [...uploadsIds];
 
