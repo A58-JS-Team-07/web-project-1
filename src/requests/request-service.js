@@ -165,6 +165,36 @@ export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePos
 };
 
 
+//  LOAD RANDOM GIF
+export const loadRandomGIF = async () => {
+  try {
+    const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${API_MASTER}&rating=g`);
+
+    if (!response.ok) {
+      throw new Error(`No response: ${response.message}`);
+    }
+
+    const randomGIFbody = await response.json();
+    const randomGIFasObject = randomGIFbody.data;
+
+    const randomGIFObject = {
+      title: randomGIFasObject.title,
+        id: randomGIFasObject.id,
+        image: {
+          url: randomGIFasObject?.images.original.url ?? '',
+          height: randomGIFasObject?.images.original.height ?? '',
+          width: randomGIFasObject?.images.original.width ?? '',
+      },
+    };
+
+    return randomGIFObject;
+  } catch (error) {
+      throw new Error(`Cannot load a random GIF: ${error.message}`)
+  }
+};
+
+
+
 // FOR TESTING PURPOSES
 
 // STANDARD GET
