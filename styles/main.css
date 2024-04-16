@@ -108,6 +108,10 @@ header #menu-and-searchbar a.active:not(.upload-btn)::after {
   flex-direction: row;
 }
 
+input:focus-visible {
+  outline: none;
+}
+
 header #search {
   flex-grow: 1;
   height: 50px;
