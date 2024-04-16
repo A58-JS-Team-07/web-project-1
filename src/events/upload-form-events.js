@@ -19,14 +19,17 @@ export const executeUploadItem = async (formData) => {
   const errorMessage = q('form p.error-message');
   const successMessage = q('form p.successful-upload');
 
-  if (fileURL === '' && file.name === '') { 
+  if (fileURL === '' && file.name === '') {
+    setLoader('stop');
     errorMessage.textContent = '*Please provide a GIF with the following formats: GIF, MP4, MOV, WebM or valid media URL.';
-  } else if (file.type !== 'image/gif' && file.type !== 'image/webp' && file.type !== 'video/quicktime'  && file.type !== 'video/mp4' && fileURL === '') {
+  } else if (file.type !== 'image/gif' && file.type !== 'image/webp' && file.type !== 'video/quicktime' && file.type !== 'video/mp4' && fileURL === '') {
     errorMessage.textContent = '*Please provide a GIF with the following formats: GIF, MP4, MOV, WebM.';
+    setLoader('stop');
     removeMessageAfter3Seconds(errorMessage);
     throw new Error('User provided file is in the wrong format!')
   } else if (fileURL !== '' && file.name !== '') {
     errorMessage.textContent = '*Please select only one of the following: upload a file or provide a valid media URL.';
+    setLoader('stop');
     removeMessageAfter3Seconds(errorMessage);
     throw new Error('User tries to upload from two sources!')
   }

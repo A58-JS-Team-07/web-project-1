@@ -173,6 +173,21 @@ header #search {
   scale: 1.12;
 }
 
+form p.error-message {
+  color: red;
+  font-weight: 500;
+}
+
+form p.successful-upload {
+  color: rgb(95, 155, 7);
+  font-weight: 600;
+}
+
+.error-message, .successful-upload {
+  position: absolute;
+  bottom: 20px;
+}
+
 /*upload button*/
 .upload-btn {
   text-decoration: none;
@@ -394,6 +409,7 @@ footer {
   border-right: 4px solid var(--primary-color);
   border-bottom: 4px solid var(--primary-color);
   text-align: left;
+  position: relative;
 }
 
 #files-container {
@@ -567,12 +583,3 @@ footer {
   cursor: pointer;
 }
 
-form p.error-message {
-  color: red;
-  font-weight: 500;
-}
-
-form p.successful-upload {
-  color: rgb(95, 155, 7);
-  font-weight: 600;
-}
