@@ -1,5 +1,6 @@
 import { uploadGIF } from '../requests/request-service.js';
 import { addUpload } from '../data/uploads.js';
+import { setLoader } from './helpers.js';
 import { q } from './helpers.js';
 import { removeMessageAfter3Seconds } from './helpers.js';
 
@@ -35,7 +36,9 @@ export const executeUploadItem = async (formData) => {
     successMessage.textContent = 'Your upload was successful!';
     removeMessageAfter3Seconds(successMessage);
     console.log('Upload successful!');
+    setLoader('stop');
   } catch (error) {
+    setLoader('stop');
     console.error('Error uploading GIF:', error.message);
   }
 };

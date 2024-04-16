@@ -1,7 +1,7 @@
 import { ENTER_KEYCODE, TRENDING } from './common/constants.js';
 import { loadPage } from './events/navigation-events.js';
 import { renderSearchItems } from './events/search-events.js';
-import { q } from './events/helpers.js';
+import { q, setLoader } from './events/helpers.js';
 import { renderGIFDetails } from './events/navigation-events.js';
 import { executeUploadItem } from './events/upload-form-events.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // This is triggering the API
   document.addEventListener('submit', async (event) => {
     event.preventDefault(); // stops submitting the form to reload the page
+    setLoader('start');
     const formData = new FormData(q('#upload-form'));
     try {
       await executeUploadItem(formData);
