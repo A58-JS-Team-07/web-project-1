@@ -1,5 +1,12 @@
 import { API_MASTER } from '../common/api.js';
 
+/**
+ * Loads trending GIFs from the Giphy API.
+ * @async
+ * @param {string} [limit='25'] - The maximum number of GIFs to load.
+ * @returns {Promise<Object[]>} - A promise that resolves to an array of objects representing the loaded GIFs.
+ * @throws {Error} - Throws an error if the fetching or parsing of GIFs fails.
+ */
 export const loadTrendingGIFs = async (limit = '25') => {
   try {
     const response = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${API_MASTER}&limit=${limit}&offset=0&rating=g&bundle=messaging_non_clips`);
@@ -31,6 +38,13 @@ export const loadTrendingGIFs = async (limit = '25') => {
   }
 };
 
+/**
+ * Loads a single GIF by its ID from the Giphy API.
+ * @async
+ * @param {string} id - The ID of the GIF to load.
+ * @returns {Promise<Object>} - A promise that resolves to an object representing the loaded GIF.
+ * @throws {Error} - Throws an error if the fetching or parsing of the GIF fails.
+ */
 export const loadSingleGIFbyID = async (id) => {
   try {
     const response = await fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${API_MASTER}&rating=g`);
@@ -66,6 +80,13 @@ export const loadSingleGIFbyID = async (id) => {
 };
 
 
+/**
+ * Loads multiple GIFs by their IDs from the Giphy API.
+ * @async
+ * @param {string[]} arrayWithGIFsID - An array containing IDs of GIFs to load.
+ * @returns {Promise<Object[]>} - A promise that resolves to an array of objects representing the loaded GIFs.
+ * @throws {Error} - Throws an error if the fetching or parsing of GIFs fails.
+ */
 export const loadMultipleGIFsByID = async (arrayWithGIFsID) => {
   try {
     const response = await fetch(`https://api.giphy.com/v1/gifs?api_key=${API_MASTER}&ids=${arrayWithGIFsID.join(',')}&rating=g`);
@@ -97,6 +118,14 @@ export const loadMultipleGIFsByID = async (arrayWithGIFsID) => {
   }
 };
 
+/**
+ * Loads GIFs based on the provided search term from the Giphy API.
+ * @async
+ * @param {string} query - The search term used to retrieve GIFs. 
+ * @param {string} [limit='25'] - The maximum number of GIFs to load.
+ * @returns {Promise<Object[]>} - A promise that resolves to an array of objects representing the loaded GIFs.
+ * @throws {Error} - Throws an error if the fetching or parsing of GIFs fails.
+ */
 export const loadGIFsBySearchTerm = async (query, limit = '25') => {
   try {
     const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_MASTER}&q=${query}&limit=${limit}&offset=0&rating=g&lang=en&bundle=messaging_non_clips`);
@@ -132,6 +161,14 @@ export const loadRandomGIFs = () => {
   // must be implemented
 };
 
+/**
+ * 
+ * @param {*} stringTags 
+ * @param {*} file 
+ * @param {*} fileURL 
+ * @param {*} sourcePostURL 
+ * @returns 
+ */
 export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePostURL = '') => {
   const formData = new FormData();
   formData.append('api_key', API_MASTER); // Add your actual GIPHY API key here
@@ -165,6 +202,13 @@ export const uploadGIF = async (stringTags, file = null, fileURL = '', sourcePos
   }
 };
 
+/**
+ * Loads James Bond GIFs from the Giphy API.
+ * @async
+ * @param {string} [limit='25'] - The maximum number of GIFs to load. 
+ * @returns {Promise<Object[]>} - A promise that resolves to an array of objects representing the loaded GIFs. 
+ * @throws {Error} - Throws an error if the fetching or parsing of GIFs fails.
+ */
 export const loadBondGIFs = async (limit = '25') => {
   try {
     const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_MASTER}&q=james bond&limit=${limit}&offset=0&rating=g&lang=en&bundle=messaging_non_clips`);
@@ -197,6 +241,12 @@ export const loadBondGIFs = async (limit = '25') => {
 };
 
 //  LOAD RANDOM GIF
+/**
+ * Loads a random GIF from the Giphy API.
+ * @async
+ * @returns {Promise<Object>} - A promise that resolves to an object representing the loaded GIF. 
+ * @throws {Error} - Throws an error if the fetching or parsing of the GIF fails.
+ */
 export const loadRandomGIF = async () => {
   try {
     const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${API_MASTER}&rating=g`);

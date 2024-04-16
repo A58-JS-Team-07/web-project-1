@@ -7,6 +7,11 @@ import { executeUploadItem } from './events/upload-form-events.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
 import { renderBondItems } from './events/bond-gifs-events.js';
 
+
+/**
+ * Event listener function that listens for the 'DOMContentLoaded' event and handles clicks on various elements.
+ * @param {Event} event - The DOMContentLoaded event.
+ */
 document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (event) => {
     if (event.target.classList.contains('nav-link')) {
@@ -39,6 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
+  /** 
+   * Event listener function that listens for the 'input' event on the search input field and renders search items accordingly.
+   * @param {Event} event - The input event.
+   */
   document.addEventListener('input', (event) => {
     if (event.target === q('input#search')) {
       renderSearchItems(event.target.value);
@@ -46,6 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // This is triggering the API
+  /** 
+   * Event listener function that listens for the 'submit' event on the upload form, prevents the default form submission behavior, and executes the upload item asynchronously.
+   * @param {Event} event - The submit event.
+   */
   document.addEventListener('submit', async (event) => {
     event.preventDefault(); // stops submitting the form to reload the page
     const formData = new FormData(q('#upload-form'));

@@ -9,6 +9,12 @@ import { toGIFSnippet } from './trending-view.js';
 // </div>
 // `;
 
+/**
+ * Generates HTML markup for displaying favorite GIFs.
+ * @param {Object[]} favoriteGIFS - An array of objects representing favorite GIFs. 
+ * @param {Object} randomObject - An object representing a random GIF. 
+ * @returns {string} - The HTML markup for displaying favorite GIFs.
+ */
 export const toFavoritesView = (favoriteGIFS, randomObject) => {
   if (favoriteGIFS.length !== 0) {
    return `

@@ -1,6 +1,12 @@
 import { uploadGIF } from '../requests/request-service.js';
 import { addUpload } from '../data/uploads.js';
 
+/**
+ * Executes the upload of a GIF item based on the provided form data.
+ * @async
+ * @param {FormData} formData - The form data containing information about the GIF item to upload.
+ * @returns {Promise<void>}
+ */
 export const executeUploadItem = async (formData) => {
   const stringTags = formData.get('tags') || '';
   let file = formData.get('local-file');
