@@ -9,6 +9,7 @@ import { toUploadsView } from '../views/uploads-view.js';
 import { getFavorites } from '../data/favorites.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 import { loadMultipleGIFsByID } from '../requests/request-service.js';
+import { loadRandomGIF } from '../requests/request-service.js';
 
 
 export const loadPage = (page = '') => {
@@ -68,10 +69,19 @@ export const renderGIFDetails = async (id = null) => {
 };
 
 const renderFavorites = async () => {
-  const favorites = getFavorites().filter((element) => element !== null);
-  Promise.all(favorites.map((id) => loadSingleGIFbyID(id))).then((favGifsArray) => {
+  const favorites = getFavorites().filter(element => element !== null);
+
+  if (favorites.length !== 0) {
+
+  Promise.all(favorites.map(id => loadSingleGIFbyID(id))).then((favGifsArray) => {
     q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(favGifsArray);
   });
+} else {
+
+  const randomObject = await loadRandomGIF();
+  q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(favorites, randomObject);
+
+  }
 };
 
 // if (favorites.length !== 0) {
