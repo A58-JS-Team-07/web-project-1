@@ -1,4 +1,4 @@
-import { toGIFSnippet } from './trending-view.js';
+import { toGIFSnippet } from './gif-view.js';
 
 // export const toFavoritesView = (favoriteGIFS, randomObject) => `
 // <div id="fav-gifs">
@@ -11,7 +11,7 @@ import { toGIFSnippet } from './trending-view.js';
 
 export const toFavoritesView = (favoriteGIFS, randomObject) => {
   if (favoriteGIFS.length !== 0) {
-   return `
+    return `
 <div id="fav-gifs">
   <h1>Your favorite GIFs</h1>
   <div class="gifs-listing">
@@ -19,9 +19,9 @@ export const toFavoritesView = (favoriteGIFS, randomObject) => {
   </div>
 </div>
 `;
-  } else {
-   return `
-<div id="fav-gifs">
+  }
+  return `
+    <div id="fav-gifs">
   <h1>Your favorite GIFs</h1>
   <p>Currently, you don\'t have any GIF as favorite</p>
   <h2>Anyway, here\'s a random one: </h2>
@@ -30,5 +30,5 @@ export const toFavoritesView = (favoriteGIFS, randomObject) => {
   </div>
 </div>
 `;
-  }
 };
+
